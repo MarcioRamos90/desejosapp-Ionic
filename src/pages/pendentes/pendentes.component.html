@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Pendentes</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>Pendentes</h1>
+  <ul>
+    <li *ngFor="let lista of listaDesejos.desejos"> {{ lista.nome }} </li>
+  </ul>
+
+</ion-content>
