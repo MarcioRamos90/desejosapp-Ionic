@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{nomeLista | placeholder:'Nova Lista de Desejos'}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label floating>Titulo</ion-label>
+        <ion-input type="text" [(ngModel)]="nomeLista" name="nomeLista"></ion-input>
+      </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating>Item:</ion-label>
+        <ion-input (keyup.enter)="adicionarItem()" type="text" [(ngModel)]="nomeItem" name="nomeItem"></ion-input>
+      </ion-item>
+      <button ion-button class="button-left" (click)="adicionarItem()">Adicionar</button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- itens -->
+  <ion-card *ngIf="listaItems.length > 0">
+    <ion-card-header>
+      <h3>Itens Adicionados</h3>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of listaItems, let i = index">
+          <button ion-button clear color="dark">
+            {{ item.nome }}
+          </button>
+          <button (click)="excluirItem(i)" ion-button outline item-right color="danger">
+            <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+            ({{ i }})
+          </button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <button (click)="salvarLista()" ion-button ico-left class="button-block">
+    <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
+    Salvar</button>
+</ion-content>

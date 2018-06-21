@@ -1,13 +1,33 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Pendentes</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h1>Pendentes</h1>
-  <ul>
-    <li *ngFor="let lista of listaDesejos.desejos"> {{ lista.nome }} </li>
-  </ul>
+  <ion-card *ngFor="let lista of listaDesejos.desejos; let i = index">
 
+    <ion-item color="dark" (click)="verDetalhe(lista, i)">
+      <p class="title">{{ lista.nome }}</p>
+      <ion-note item-right> {{ lista.items.length }} items </ion-note>
+    </ion-item>
+
+    <ion-list (click)="verDetalhe(lista, i)" *ngFor="let item of lista.items | slice:0:2">
+      <ion-item>
+        <ion-icon *ngIf="!item.completo" ios="ios-square-outline" md="md-square-outline"></ion-icon>
+        <ion-icon *ngIf="item.completo" ios="ios-checkbox-outline" md="md-checkbox-outline"></ion-icon>
+        {{item.nome}}
+      </ion-item>
+
+    </ion-list>
+    <ion-item *ngIf="lista.items.length > 2" class="text-center">
+      <ion-icon ios="ios-arrow-dropdown-circle" md="md-arrow-dropdown-circle"></ion-icon>
+    </ion-item>
+  </ion-card>
+
+  <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="irAdicionar()">
+      <ion-icon ios="ios-add" md="md-add"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

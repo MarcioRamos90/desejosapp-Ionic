@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ lista.nome }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-item>
+        <ion-label floating>Nome da Lista </ion-label>
+        <ion-input type="text" [(ngModel)]="lista.nome"></ion-input>
+      </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of lista.items " (click)="atualizar(item)">
+          <ion-icon *ngIf="!item.completo" ios="ios-square-outline" md="md-square-outline"></ion-icon>
+          <ion-icon *ngIf="item.completo" ios="ios-checkbox-outline" md="md-checkbox-outline"></ion-icon>
+          <h2 [class.tachada]="item.completo">{{ item.nome }}</h2>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <br>
+  <br>
+  <button (click)="excluirLista(lista)" ion-button class="button-block" color="danger">Excluir</button>
+</ion-content>
