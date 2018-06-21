@@ -19,7 +19,7 @@
         <ion-label floating>Item:</ion-label>
         <ion-input (keyup.enter)="adicionarItem()" type="text" [(ngModel)]="nomeItem" name="nomeItem"></ion-input>
       </ion-item>
-      <button ion-button class="button-left" (click)="adicionarItem()">Adicionar</button>
+      <button ion-button class="button-left" (click)="adicionarItem()">Adicionar Item</button>
     </ion-card-content>
   </ion-card>
 
@@ -36,7 +36,6 @@
           </button>
           <button (click)="excluirItem(i)" ion-button outline item-right color="danger">
             <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
-            ({{ i }})
           </button>
         </ion-item>
       </ion-list>
@@ -44,6 +43,5 @@
   </ion-card>
 
   <button (click)="salvarLista()" ion-button ico-left class="button-block">
-    <ion-icon ios="ios-add-circle" md="md-add-circle"></ion-icon>
     Salvar</button>
 </ion-content>

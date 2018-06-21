@@ -39,9 +39,9 @@ export class AdicionarComponent implements OnInit {
   }
 
   salvarLista() {
-   if (this.nomeLista.length == 0) {
+    if (this.nomeLista.length == 0) {
       this.showAlert();
-      return; 
+      return;
     }
 
     let lista = new Lista(this.nomeLista);
@@ -53,7 +53,7 @@ export class AdicionarComponent implements OnInit {
   showAlert() {
     const alert = this.alertCtrl.create({
       title: "Nome Lista Vazia",
-      subTitle: "Por favor adicione onome da lista",
+      subTitle: "Por favor adicione o nome da lista",
       buttons: ["OK"]
     });
     alert.present();
